@@ -27,6 +27,13 @@ Images are available on [Docker Hub](https://hub.docker.com/r/j4ckofalltrades/le
 | 3.0     | [3.0/Dockerfile](3.0/Dockerfile)     | [j4ckofalltrades/legacy-python:3.0](https://hub.docker.com/r/j4ckofalltrades/legacy-python/tags?name=3.0)     |
 | 3.1     | [3.1/Dockerfile](3.1/Dockerfile)     | [j4ckofalltrades/legacy-python:3.1](https://hub.docker.com/r/j4ckofalltrades/legacy-python/tags?name=3.1)     |
 | 3.2     | [3.2/Dockerfile](3.2/Dockerfile)     | [j4ckofalltrades/legacy-python:3.2](https://hub.docker.com/r/j4ckofalltrades/legacy-python/tags?name=3.2)     |
+| 3.3     | [3.3/Dockerfile](3.3/Dockerfile)     | [j4ckofalltrades/legacy-python:3.3](https://hub.docker.com/r/j4ckofalltrades/legacy-python/tags?name=3.3)     |
+| 3.4     | [3.4/Dockerfile](3.4/Dockerfile)     | [j4ckofalltrades/legacy-python:3.4](https://hub.docker.com/r/j4ckofalltrades/legacy-python/tags?name=3.4)     |
+| 3.5     | [3.5/Dockerfile](3.5/Dockerfile)     | [j4ckofalltrades/legacy-python:3.5](https://hub.docker.com/r/j4ckofalltrades/legacy-python/tags?name=3.5)     |
+| 3.6     | [3.6/Dockerfile](3.6/Dockerfile)     | [j4ckofalltrades/legacy-python:3.6](https://hub.docker.com/r/j4ckofalltrades/legacy-python/tags?name=3.6)     |
+| 3.7     | [3.7/Dockerfile](3.7/Dockerfile)     | [j4ckofalltrades/legacy-python:3.7](https://hub.docker.com/r/j4ckofalltrades/legacy-python/tags?name=3.7)     |
+| 3.8     | [3.8/Dockerfile](3.8/Dockerfile)     | [j4ckofalltrades/legacy-python:3.8](https://hub.docker.com/r/j4ckofalltrades/legacy-python/tags?name=3.8)     |
+| 3.9     | [3.9/Dockerfile](3.9/Dockerfile)     | [j4ckofalltrades/legacy-python:3.9](https://hub.docker.com/r/j4ckofalltrades/legacy-python/tags?name=3.9)     |
 
 ## Usage
 
@@ -47,8 +54,8 @@ docker run -it j4ckofalltrades/legacy-python:2.0
 
 ```sh
 # from GitHub Container Registry
-docker pull ghcr.io/j4ckofalltrades/legacy-python:3.0
-docker run -it ghcr.io/j4ckofalltrades/legacy-python:3.0
+docker pull ghcr.io/j4ckofalltrades/legacy-python:2.0
+docker run -it ghcr.io/j4ckofalltrades/legacy-python:2.0
 ```
 
 ## Attribution and sources
