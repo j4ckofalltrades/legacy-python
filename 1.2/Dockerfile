@@ -16,4 +16,4 @@ RUN make install
 RUN make libinstall
 WORKDIR /
 
-CMD python
+CMD ["python"]
