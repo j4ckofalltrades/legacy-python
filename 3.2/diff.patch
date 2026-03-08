@@ -1,0 +1,90 @@
+--- Parser/asdl_c.py
++++ Parser/asdl_c.py
+@@ -1,1 +1,1 @@
+-#! /usr/bin/env python
++#! /usr/bin/python2
+@@ -1005,1 +1005,1 @@
+-        self.emit("default:" % name, 2)
++        self.emit("default:", 2)
+
+--- Objects/typeslots.py
++++ Objects/typeslots.py
+@@ -1,4 +1,4 @@
+-#!/usr/bin/python
++#!/usr/bin/python2
+ # Usage: typeslots.py < Include/typeslots.h > typeslots.inc
+
+ import sys, re
+
+--- Python/makeopcodetargets.py
++++ Python/makeopcodetargets.py
+@@ -1,4 +1,4 @@
+-#! /usr/bin/env python
++#! /usr/bin/python2
+ """Generate C code for the jump table of the threaded code interpreter
+ (for compilers supporting computed gotos or "labels-as-values", such as gcc).
+ """
+
+--- Makefile.pre.in
++++ Makefile.pre.in
+@@ -188,1 +188,1 @@
+-PYTHON=		python$(EXE)
++PYTHON=		python2$(EXE)
+
+--- Modules/gcmodule.c
++++ Modules/gcmodule.c
+@@ -47,12 +47,21 @@
+ /* linked lists of container objects */
+ static struct gc_generation generations[NUM_GENERATIONS] = {
+     /* PyGC_Head,                               threshold,      count */
+-    {{{GEN_HEAD(0), GEN_HEAD(0), 0}},           700,            0},
+-    {{{GEN_HEAD(1), GEN_HEAD(1), 0}},           10,             0},
+-    {{{GEN_HEAD(2), GEN_HEAD(2), 0}},           10,             0},
++    {{{NULL, NULL, 0}},                         700,            0},
++    {{{NULL, NULL, 0}},                         10,             0},
++    {{{NULL, NULL, 0}},                         10,             0},
+ };
+
+-PyGC_Head *_PyGC_generation0 = GEN_HEAD(0);
++PyGC_Head * volatile _PyGC_generation0 = NULL;
++
++void _PyGC_Initialize(void) {
++    int i;
++    for (i = 0; i < NUM_GENERATIONS; i++) {
++        generations[i].head.gc.gc_next = GEN_HEAD(i);
++        generations[i].head.gc.gc_prev = GEN_HEAD(i);
++    }
++    _PyGC_generation0 = GEN_HEAD(0);
++}
+
+ static int enabled = 1; /* automatic collection enabled? */
+
+--- Python/pythonrun.c
++++ Python/pythonrun.c
+@@ -183,6 +183,7 @@
+     PyThreadState *tstate;
+     PyObject *bimod, *sysmod, *pstderr;
+     char *p;
++    extern void _PyGC_Initialize(void);
+     extern void _Py_ReadyTypes(void);
+
+     if (initialized)
+@@ -226,6 +227,7 @@
+     _PyGILState_Init(interp, tstate);
+ #endif /* WITH_THREAD */
+
++    _PyGC_Initialize();
+     _Py_ReadyTypes();
+
+     if (!_PyFrame_Init())
+
+--- Include/objimpl.h
++++ Include/objimpl.h
+@@ -253,7 +253,7 @@
+     long double dummy;  /* force worst-case alignment */
+ } PyGC_Head;
+
+-extern PyGC_Head *_PyGC_generation0;
++extern PyGC_Head * volatile _PyGC_generation0;
+
+ #define _Py_AS_GC(o) ((PyGC_Head *)(o)-1)

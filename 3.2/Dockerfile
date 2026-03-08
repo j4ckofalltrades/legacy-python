@@ -1,0 +1,18 @@
+FROM debian:bullseye
+RUN set -x && \
+    apt-get update && \
+    apt-get install build-essential patch python2 wget -y
+WORKDIR /tmp
+
+RUN wget https://www.python.org/ftp/python/3.2/Python-3.2.tgz
+RUN tar -xf Python-3.2.tgz
+WORKDIR /tmp/Python-3.2
+
+COPY diff.patch diff.patch
+RUN patch -p0 < diff.patch
+RUN ./configure
+RUN make install
+RUN ln -s /usr/local/bin/python3.2 /usr/local/bin/python
+WORKDIR /
+
+CMD ["python"]
