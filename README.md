@@ -1,6 +1,6 @@
 # Legacy Python
 
-Base images for legacy Python versions 0.9.1, 1.x, 2.x, and 3.x. More recent versions of Python 3 are readily available through the official [Docker Python image](https://hub.docker.com/_/python) and version managements tools like [pyenv](https://github.com/pyenv/pyenv) or [uv](https://github.com/astral-sh/uv).
+Base images for all end-of-life Python versions (0.9.1, 1.x, 2.x, and select 3.x releases). More recent versions of Python 3 are readily available through the official [Docker Python image](https://hub.docker.com/_/python) and version management tools like [pyenv](https://github.com/pyenv/pyenv) or [uv](https://github.com/astral-sh/uv).
 
 ## Versions
 
@@ -48,7 +48,7 @@ docker run -it j4ckofalltrades/legacy-python:2.0
 ```sh
 # from GitHub Container Registry
 docker pull ghcr.io/j4ckofalltrades/legacy-python:3.0
-docker run -it ghcr.io/j4ckofalltrades/legacy-python:2.0
+docker run -it ghcr.io/j4ckofalltrades/legacy-python:3.0
 ```
 
 ## Attribution and sources

@@ -5,6 +5,7 @@ RUN set -x && \
     apt-get install build-essential patch wget -y
 WORKDIR /tmp
 
+# Courtesy of Skip Montanaro: https://github.com/smontanaro/python-0.9.1
 COPY python-0.9.1/ python-0.9.1/
 
 WORKDIR /tmp/python-0.9.1/src/
