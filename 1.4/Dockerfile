@@ -1,4 +1,5 @@
 FROM debian:bullseye
+LABEL org.opencontainers.image.source=https://github.com/j4ckofalltrades/legacy-python
 RUN set -x && \
     apt-get update && \
     apt-get install build-essential libcrypt-dev patch wget -y
