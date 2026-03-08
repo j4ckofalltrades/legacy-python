@@ -11,7 +11,7 @@ WORKDIR /tmp/Python-1.4
 
 COPY diff.patch diff.patch
 RUN patch -p0 < diff.patch
-RUN LIBS="-lcrypt" ./configure
+RUN ./configure
 RUN make install
 WORKDIR /
 

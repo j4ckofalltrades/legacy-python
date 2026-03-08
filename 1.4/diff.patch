@@ -1,3 +1,14 @@
+--- Modules/Setup.in
++++ Modules/Setup.in
+@@ -113,7 +113,7 @@
+ fcntl fcntlmodule.c	# fcntl(2) and ioctl(2)
+ pwd pwdmodule.c		# pwd(3)
+ grp grpmodule.c		# grp(3)
+-crypt cryptmodule.c # -lcrypt	# crypt(3); needs -lcrypt on some systems
++crypt cryptmodule.c -lcrypt	# crypt(3); needs -lcrypt on some systems
+ select selectmodule.c	# select(2); not on ancient System V
+ socket socketmodule.c	# socket(2); not on ancient System V
+
 --- Objects/fileobject.c
 +++ Objects/fileobject.c
 @@ -424,7 +424,7 @@
