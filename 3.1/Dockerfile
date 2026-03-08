@@ -13,7 +13,6 @@ COPY diff.patch diff.patch
 RUN patch -p0 < diff.patch
 RUN ./configure
 RUN make install
-RUN ln -s /usr/local/bin/python3.1 /usr/local/bin/python
 WORKDIR /
 
-CMD ["python"]
+CMD ["python3"]
