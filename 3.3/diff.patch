@@ -1,0 +1,12 @@
+--- Objects/obmalloc.c
++++ Objects/obmalloc.c
+@@ -139,2 +139,7 @@
+-#define ALIGNMENT               8               /* must be 2^N */
+-#define ALIGNMENT_SHIFT         3
++#if SIZEOF_VOID_P > 4
++#define ALIGNMENT               16              /* must be 2^N */
++#define ALIGNMENT_SHIFT         4
++#else
++#define ALIGNMENT               8               /* must be 2^N */
++#define ALIGNMENT_SHIFT         3
++#endif
